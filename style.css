@@ -1,0 +1,199 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Comfortaa", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(raiden.png) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.container {
+    border-radius: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    background: rgb(85, 0, 254);
+    background: radial-gradient(circle, rgba(85, 0, 254, 1) 65%, rgba(163, 0, 255, 1) 85%);
+    padding: 40px 60px;
+
+}
+
+h2 {
+    padding: 10px 10px;
+    text-align: center;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 251, 1) 50%, rgba(252, 69, 69, 1) 100%);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-size: 3em;
+    color: white;
+    text-transform: capitalize;
+    letter-spacing: 0.1em;
+    position: relative;
+
+}
+
+h2::after {
+    color: violet;
+    content: "Валентина❤️";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+
+h2:hover::after {
+    display: block;
+}
+
+h2:hover {
+    color: transparent;
+}
+
+.reset {
+    text-transform: capitalize;
+    cursor: pointer;
+    position: relative;
+    padding: 10px 10px;
+    font-size: 1.5em;
+    color: white;
+    border:0;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: transparent;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    overflow: hidden;
+}
+
+.reset::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: inherit;
+    scale: 0;
+    z-index: -1;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(252, 69, 69, 1) 0%, rgba(253, 29, 251, 1) 50%, rgba(131, 58, 180, 1) 100%);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.reset:hover::before {
+    scale: 9.1;
+}
+
+.reset:hover {
+    color: white;
+    scale: 1;
+}
+
+.reset:active {
+    scale: 1;
+}
+
+
+
+
+.game {
+    width: 440px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    background: rgb(131, 58, 180);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 251, 1) 50%, rgba(252, 69, 69, 1) 100%);
+    border-radius: 25px;
+    transform: rotateY(180deg);
+    transition: 0.4s;
+    /*transition-timing-function:ease-in-out;*/
+}
+
+.item::after {
+    content: ' ';
+    position: absolute;
+    inset: 0;
+    background: #27263d;
+    border-radius: 20px;
+    transition: 0.4s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+
+
+}
+
+.boxOpen:after,
+.boxMatch:after {
+    transform: rotateY(180deg);
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+}
+
+/* Стили для мобильных устройств с шириной экрана меньше 600px */
+@media screen and (max-width: 600px) {
+    .container {
+        padding: 10px 10px;
+        /* Уменьшил отступы контейнера */
+    }
+
+    h2 {
+        font-size: 2em;
+        /* Уменьшил размер шрифта заголовка */
+    }
+
+    h2::after {
+        font-size: 1em;
+        /* Уменьшил размер шрифта псевдоэлемента */
+    }
+
+    .reset {
+        font-size: 1em;
+        /* Уменьшил размер шрифта кнопки */
+    }
+
+    .game {
+        width: 310px;
+        /* Уменьшил ширину игрового поля */
+        height: 310px;
+        /* Уменьшил высоту игрового поля */
+    }
+
+    .item {
+        width: 70px;
+        /* Уменьшил ширину карточки */
+        height: 70px;
+        /* Уменьшил высоту карточки */
+        font-size: 3em;
+        /* Уменьшил размер шрифта эмодзи */
+    }
+}
